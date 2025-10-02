@@ -13,9 +13,10 @@ Sistema de gerenciamento de pedidos para lanchonete desenvolvido como projeto de
 
 ## 🗃️ Modelagem de Dados
 ### Diagrama do Banco
-![Modelagem do Banco](caminho/para/sua/image.png)  <!-- AQUI VOCÊ COLA O PRINT DO LUCIDCHART -->
 
 *Diagrama criado no LucidChart mostrando as relações entre as tabelas*
+
+![Modelagem do Banco](imgs/diagramaBDLanchonete.png)
 
 ### Descrição das Tabelas
 - **funcionarios**: Cadastro da equipe
