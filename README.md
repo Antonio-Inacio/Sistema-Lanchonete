@@ -160,7 +160,8 @@ INSERT INTO produtos (nome, preco, categoria_produto) VALUES
 
 -- INSERINDO PEDIDOS E ITENS PEDIDOS
 
--- [Arquivo geraPedidos.py] # criei esse arquivo em py para gerar 1000 pedidos, assim possibilita uma analise mais elaborada
+-- arquivo [inserts.sql] inserts de 1000 pedidos gerados pelo arquivo python
+--[Arquivo geraPedidos.py] # criei esse arquivo em py para gerar 1000 pedidos, assim possibilita uma analise mais elaborada
 
 -- Para cada pedido, primeiro é inserido o registro na tabela pedidos e depois os itens na tabela itens_pedido. 
 -- O valor_total em pedidos é calculado automaticamente através do trigger criado.

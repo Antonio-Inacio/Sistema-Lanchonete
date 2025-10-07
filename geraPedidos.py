@@ -22,14 +22,15 @@ TIPOS_ENTREGA = ["BALCAO", "ENTREGA"]
 FORMAS_PAGAMENTO = ["DINHEIRO", "PIX", "DEBITO", "CREDITO"]
 
 def esc(val):
+    """Escapa valores de texto para SQL."""
     if val is None:
         return "NULL"
-    return f"'{val.replace('\'','\'\'')}'"
+    return f"'{val.replace('\'', '\'\'')}'"
 
-# Função para gerar data aleatória nos últimos 30 dias
 def data_aleatoria(dias=30):
+    """Gera uma data/hora aleatória nos últimos N dias."""
     hoje = datetime.now()
-    delta = timedelta(days=random.randint(0, dias), hours=random.randint(0,23), minutes=random.randint(0,59))
+    delta = timedelta(days=random.randint(0, dias), hours=random.randint(0, 23), minutes=random.randint(0, 59))
     return hoje - delta
 
 def gerar_inserts(num_pedidos=1000, arquivo_saida="inserts.sql"):
@@ -39,23 +40,26 @@ def gerar_inserts(num_pedidos=1000, arquivo_saida="inserts.sql"):
             origem = random.choice(ORIGENS)
             tipo_entrega = random.choice(TIPOS_ENTREGA)
             endereco = None if tipo_entrega == "BALCAO" else fake.address().replace("\n", ", ")
-            observacao = random.choice(["Sem cebola", "Embalar viagem", "Cliente preferencial", "Rápido, por favor"])
+            observacao = random.choice([
+                "Sem cebola", "Embalar viagem", "Cliente preferencial", "Rápido, por favor"
+            ])
             forma_pagamento = random.choice(FORMAS_PAGAMENTO)
-            data_hora = data_aleatoria(30)  # últimos 30 dias
+            data_hora = data_aleatoria(30)
 
             # Seleciona de 2 a 4 produtos por pedido
             itens = random.sample(PRODUTOS, k=random.randint(2, 4))
 
-            valor_total = sum([p[1] * random.randint(1,2) for p in itens])
-            if tipo_entrega == "ENTREGA":
-                valor_total += 5  # taxa de entrega
-
-            # INSERT na tabela pedidos
+            # -------------- INSERIR PEDIDO --------------
             f.write(f"-- pedido {pedido_id}\n")
-            f.write(f"INSERT INTO pedidos (id_pedido, id_funcionario, data_hora, origem, tipo_entrega, endereco, observacao, forma_pagamento, valor_total)\n")
-            f.write(f"VALUES ({pedido_id}, {id_funcionario}, '{data_hora.strftime('%Y-%m-%d %H:%M:%S')}', '{origem}', '{tipo_entrega}', {esc(endereco)}, {esc(observacao)}, '{forma_pagamento}', {valor_total:.2f});\n\n")
+            f.write(
+                f"INSERT INTO pedidos (id_pedido, id_funcionario, data_hora, origem, tipo_entrega, endereco, observacao, forma_pagamento)\n"
+            )
+            f.write(
+                f"VALUES ({pedido_id}, {id_funcionario}, '{data_hora.strftime('%Y-%m-%d %H:%M:%S')}', "
+                f"'{origem}', '{tipo_entrega}', {esc(endereco)}, {esc(observacao)}, '{forma_pagamento}');\n\n"
+            )
 
-            # INSERT na tabela itens_pedido (um insert com múltiplas linhas)
+            # -------------- INSERIR ITENS DO PEDIDO --------------
             f.write("INSERT INTO itens_pedido (id_pedido, id_produto, quantidade, preco_unitario) VALUES\n")
             for idx, (id_produto, preco) in enumerate(itens):
                 qtd = random.randint(1, 2)
@@ -63,7 +67,7 @@ def gerar_inserts(num_pedidos=1000, arquivo_saida="inserts.sql"):
                 f.write(f"({pedido_id}, {id_produto}, {qtd}, {preco:.2f}){fim}\n")
             f.write("\n")
 
-    print(f"Arquivo '{arquivo_saida}' gerado com {num_pedidos} pedidos em datas aleatórias dos últimos 30 dias.")
+    print(f"✅ Arquivo '{arquivo_saida}' gerado com {num_pedidos} pedidos em datas aleatórias dos últimos 30 dias.")
 
 # Exemplo de uso
 if __name__ == "__main__":
