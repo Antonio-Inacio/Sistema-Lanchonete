@@ -177,3 +177,7 @@ INSERT INTO itens_pedido (id_pedido, id_produto, quantidade, preco_unitario) VAL
 (1, 11, 1, 15.00), -- 1 Coca-Cola 2L
 (1, 28, 2, 14.00); -- 1 porções de queijo
 -- +5.00 taxa de entrega
+
+## Problemas Enfrentados:
+
+![Problemas Enfrentados](PROBLEMASENFRENTADOS.md)
