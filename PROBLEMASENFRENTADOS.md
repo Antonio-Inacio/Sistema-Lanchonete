@@ -101,6 +101,7 @@ Antes da correção:
 ![Grafico Dia](imgs/semValorTotalCorrigido.png)
 
 Depois da Correção:
+
 ![Grafico Dia](imgs/comValorTotalCorrigido.png)
 
 💡 Conclusão e Aprendizado
@@ -117,4 +118,4 @@ Isso reduz erros silenciosos e torna as medidas muito mais limpas, performática
 
 🔗 Relacionado
 
-![README.md](README.md)
+![README](README.md)
