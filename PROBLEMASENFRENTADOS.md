@@ -58,6 +58,7 @@ SELECT
 FROM pedidos Pe
 WHERE EXTRACT(DOW FROM Pe.data_hora) = 1;
 ```
+![Soma Valores de Segunda](imgs/somaValoresSegundas.png)  
 
 🧩 Função EXTRACT(DOW ...)
 
