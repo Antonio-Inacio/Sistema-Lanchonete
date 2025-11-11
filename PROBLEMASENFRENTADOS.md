@@ -53,8 +53,7 @@ Para validar a consistência dos valores, foi utilizada a seguinte query SQL no 
 
 ```sql
 SELECT 
-  Pe.id_pedido,
-  Pe.valor_total
+  SUM(Pe.valor_total) as somavalores_segundas
 FROM pedidos Pe
 WHERE EXTRACT(DOW FROM Pe.data_hora) = 1;
 ```
