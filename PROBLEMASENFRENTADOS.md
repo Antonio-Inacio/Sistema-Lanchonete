@@ -160,9 +160,9 @@ SELECTCOLUMNS(
 ```
 
 ✅ Benefícios
-♦ Slicer limpo, sem datas que não possuem vendas
-♦ Filtros mais intuitivos para o usuário
-♦ Evita confusões causadas pela presença de hora na coluna data_hora
-♦ Melhor controle visual e semântico no dashboard
+♦ Slicer limpo, sem datas que não possuem vendas  
+♦ Filtros mais intuitivos para o usuário  
+♦ Evita confusões causadas pela presença de hora na coluna data_hora  
+♦ Melhor controle visual e semântico no dashboard  
 
 ![Dataas](imgs/SlicerDatas.png)
