@@ -120,6 +120,7 @@ Isso reduz erros silenciosos e torna as medidas muito mais limpas, performática
 
 ![README](README.md)
 
+---
 
 ## Criação de tabela dimensão auxiliar para análise temporal
 
@@ -165,4 +166,5 @@ SELECTCOLUMNS(
 ♦ Evita confusões causadas pela presença de hora na coluna data_hora  
 ♦ Melhor controle visual e semântico no dashboard  
 
-![Dataas](imgs/SlicerDatas.png)
+![Datas](imgs/SlicerDatas.png)  
+![Datas](imgs/RelacaoDatas.png)
