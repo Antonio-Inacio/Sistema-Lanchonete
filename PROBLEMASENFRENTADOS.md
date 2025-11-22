@@ -157,6 +157,7 @@ SELECTCOLUMNS(
     "OrdemMes", MONTH('dCalendario'[Datas]),            
     "OrdemDia", DAY('dCalendario'[Datas])               
 )
+```
 
 ✅ Benefícios
 ♦ Slicer limpo, sem datas que não possuem vendas
@@ -164,4 +165,4 @@ SELECTCOLUMNS(
 ♦ Evita confusões causadas pela presença de hora na coluna data_hora
 ♦ Melhor controle visual e semântico no dashboard
 
-![Grafico Dia](imgs/SlicerDatas.png)
+![Dataas](imgs/SlicerDatas.png)
