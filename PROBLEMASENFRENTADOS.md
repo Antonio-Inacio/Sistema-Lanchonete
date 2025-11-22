@@ -119,3 +119,49 @@ Isso reduz erros silenciosos e torna as medidas muito mais limpas, performática
 🔗 Relacionado
 
 ![README](README.md)
+
+
+## Criação de tabela dimensão auxiliar para análise temporal
+
+### dMes_com_dados — Tabela Auxiliar de Datas Utilizadas
+
+A tabela `dMes_com_dados` foi criada para alimentar o slicer de datas do dashboard, exibindo **apenas os meses e dias que possuem pedidos registrados**.  
+Isso evita que o usuário visualize meses sem dados quando, na prática, o banco contém dados apenas em alguns dias específicos.
+
+---
+
+## 📌 Objetivo da Tabela
+
+- Filtrar o calendário para **mostrar apenas dias com vendas**.  
+- Criar uma estrutura organizada contendo:
+  - Nome do mês  
+  - Número do dia  
+  - Data (sem hora)  
+  - Colunas auxiliares para ordenação  
+- Melhorar usabilidade do slicer temporal no Power BI.
+
+---
+
+## 🧮 Medida DAX Utilizada
+
+```DAX
+dMes_com_dados =
+SELECTCOLUMNS(
+    FILTER(
+        'dCalendario',
+        'dCalendario'[Datas] IN VALUES('dPedidos'[data_hora])
+    ),
+    "Mes", FORMAT('dCalendario'[Datas], "MMMM"),        
+    "Numero_dia", DAY('dCalendario'[Datas]),            
+    "Data", 'dCalendario'[Datas],                       
+    "OrdemMes", MONTH('dCalendario'[Datas]),            
+    "OrdemDia", DAY('dCalendario'[Datas])               
+)
+
+✅ Benefícios
+♦ Slicer limpo, sem datas que não possuem vendas
+♦ Filtros mais intuitivos para o usuário
+♦ Evita confusões causadas pela presença de hora na coluna data_hora
+♦ Melhor controle visual e semântico no dashboard
+
+![Grafico Dia](imgs/SlicerDatas.png)
